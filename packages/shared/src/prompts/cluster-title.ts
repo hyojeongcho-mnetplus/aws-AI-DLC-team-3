@@ -9,6 +9,10 @@ import type { ProcessedReview } from '../types/index.js';
  * 사용 시점: 새로운 클러스터가 생성될 때, 또는 리뷰가 추가되어 클러스터 성격이 변할 때
  */
 export function buildClusterTitlePrompt(reviews: ProcessedReview[]): string {
+  if (!reviews.length) {
+    throw new Error('buildClusterTitlePrompt: reviews array must not be empty');
+  }
+
   const input = reviews.slice(0, 10).map((r) => ({
     summary: r.summary,
     category: r.category,

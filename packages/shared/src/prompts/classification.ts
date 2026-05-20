@@ -7,12 +7,18 @@ import type { ReviewEvent } from '../types/index.js';
  * 기능 분류, 이슈 타입, 긴급도, 요약을 생성한다.
  */
 export function buildClassificationPrompt(reviews: ReviewEvent[]): string {
+  if (!reviews.length) {
+    throw new Error('buildClassificationPrompt: reviews array must not be empty');
+  }
+
   const reviewsInput = reviews.map((r) => ({
     id: r.id,
     source: r.source,
+    sourceUrl: r.sourceUrl,
     rating: r.rating,
     body: r.body.slice(0, 500),
     createdAt: r.createdAt,
+    language: r.language,
   }));
 
   return `당신은 Mnet Plus 앱의 사용자 리뷰를 분석하는 전문가입니다.
@@ -20,6 +26,19 @@ export function buildClassificationPrompt(reviews: ReviewEvent[]): string {
 ## 목적
 운영자와 내부 관계자가 대시보드에서 현재 가장 중요한 이슈를 빠르게 파악할 수 있도록,
 각 리뷰를 정확하게 분류하고 핵심을 요약합니다.
+
+## 출처 정보
+각 리뷰에는 source(출처)가 포함되어 있습니다:
+- "appstore": Apple App Store 리뷰 (iOS 사용자)
+- "googleplay": Google Play Store 리뷰 (Android 사용자)
+출처에 따라 플랫폼 특성이 다를 수 있으나, 분류 기준은 동일하게 적용하세요.
+
+## 객관성 규칙
+- 리뷰 본문에 명시적으로 언급된 내용만 근거로 판단하세요.
+- 사용자의 감정(화남, 실망)이 아닌 **기술적 현상**을 기준으로 분류하세요.
+- 별점(rating)은 참고만 하세요. 별점이 낮아도 기능 요청일 수 있고, 별점이 높아도 에러 보고일 수 있습니다.
+- 하나의 리뷰에 여러 이슈가 있으면, 가장 심각한 이슈를 기준으로 분류하세요.
+- "아마", "~인 것 같다" 같은 추측 표현을 summary에 사용하지 마세요.
 
 ## 분류 기준
 

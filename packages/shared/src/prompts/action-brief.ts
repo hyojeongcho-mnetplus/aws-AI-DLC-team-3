@@ -7,6 +7,10 @@ import type { ClusterSnapshot, ProcessedReview } from '../types/index.js';
  * 담당팀, 상황 요약, 구체적 조치 사항을 생성한다.
  */
 export function buildActionBriefPrompt(cluster: ClusterSnapshot, evidence: ProcessedReview[]): string {
+  if (!evidence.length) {
+    throw new Error('buildActionBriefPrompt: evidence array must not be empty');
+  }
+
   const evidenceInput = evidence.slice(0, 10).map((r) => ({
     id: r.id,
     source: r.source,
@@ -35,6 +39,13 @@ export function buildActionBriefPrompt(cluster: ClusterSnapshot, evidence: Proce
 
 복합 이슈(예: 광고 후 투표 실패)는 가장 근본 원인에 가까운 팀을 선택하세요.
 판단이 어려우면 app_team으로 지정하세요.
+
+## 출처 및 객관성 규칙
+- 증거 리뷰의 source 필드로 출처(appstore/googleplay)를 확인할 수 있습니다.
+- 양쪽 플랫폼에서 동일 이슈가 발생하면 summary에 "iOS/Android 모두 해당"을 명시하세요.
+- 한쪽 플랫폼에서만 발생하면 "iOS에서만 발생" 또는 "Android에서만 발생"을 명시하세요.
+- 사용자 감정이 아닌 **기술적 현상과 빈도**를 기준으로 작성하세요.
+- 증거에 없는 원인을 추측하지 마세요. "원인 미확인, 로그 확인 필요" 형태로 작성하세요.
 
 ## 좋은 출력 예시
 - owner: "ads_team"

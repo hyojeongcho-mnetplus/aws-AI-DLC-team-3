@@ -437,3 +437,11 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation, 워크플로우 준수 점검
 
 ---
+
+## Unit 6 프롬프트 - 방어 코드 + PBT + 출처/객관성 점검
+**Timestamp**: 2026-05-20T14:46:14+09:00
+**User Input**: "ㄱㄱ 진행하고, 프롬프트 한번더 확인해줘봐. 출처에 대한 정보도 있는지랑 객관적이게 판단할수 있게끔 되어있는지."
+**AI Response**: 방어 코드 추가 + PBT 테스트 + 프롬프트에 출처 정보 명시 + 객관성 판단 규칙 강화
+**Context**: CONSTRUCTION - Code Generation, Unit 6 프롬프트 품질 강화
+
+---
