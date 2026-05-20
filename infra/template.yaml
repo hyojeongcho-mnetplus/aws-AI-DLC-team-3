@@ -60,7 +60,7 @@ Resources:
     Properties:
       FunctionName: ffr-ingest
       Handler: handler.handler
-      CodeUri: ../packages/ingest/
+      CodeUri: ../packages/ingest/dist/
       MemorySize: 512
       Timeout: 60
       Events:
@@ -91,20 +91,13 @@ Resources:
             - Effect: Allow
               Action: bedrock:InvokeModel
               Resource: !Sub arn:aws:bedrock:${BedrockRegion}::foundation-model/${BedrockModelId}
-    Metadata:
-      BuildMethod: esbuild
-      BuildProperties:
-        Minify: true
-        Target: es2022
-        EntryPoints: [handler.ts]
-        External: ['@aws-sdk/*']
 
   ApiFunction:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: ffr-api
       Handler: handler.handler
-      CodeUri: ../packages/api/
+      CodeUri: ../packages/api/dist/
       MemorySize: 256
       Timeout: 10
       Events:
@@ -145,20 +138,13 @@ Resources:
             - Effect: Allow
               Action: bedrock:InvokeModel
               Resource: !Sub arn:aws:bedrock:${BedrockRegion}::foundation-model/${BedrockModelId}
-    Metadata:
-      BuildMethod: esbuild
-      BuildProperties:
-        Minify: true
-        Target: es2022
-        EntryPoints: [handler.ts]
-        External: ['@aws-sdk/*']
 
   DashboardFunction:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: ffr-dashboard
-      Handler: handler.handler
-      CodeUri: ../packages/dashboard/
+      Handler: serve-handler.handler
+      CodeUri: ../packages/dashboard/dist/
       MemorySize: 128
       Timeout: 5
       Events:
@@ -174,13 +160,6 @@ Resources:
             RestApiId: !Ref FanFrictionApi
             Path: /{proxy+}
             Method: GET
-    Metadata:
-      BuildMethod: esbuild
-      BuildProperties:
-        Minify: true
-        Target: es2022
-        EntryPoints: [handler.ts]
-        External: ['@aws-sdk/*']
 
   # --- Storage ---
   FanFrictionRadarTable:

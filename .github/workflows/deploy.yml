@@ -5,8 +5,7 @@ on:
     branches: [main]
     paths:
       - 'infra/**'
-      - 'packages/*/handler.ts'
-      - 'packages/*/src/**'
+      - 'packages/**'
 
 env:
   AWS_REGION: us-east-1
@@ -22,8 +21,15 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Install esbuild
-        run: npm install -g esbuild
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build packages
+        run: pnpm -r build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
