@@ -413,3 +413,19 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation, API-Dashboard 정합성 수정
 
 ---
+
+## Unit 6 프롬프트 추가 검토
+**Timestamp**: 2026-05-20T14:39:32+09:00
+**User Input**: "프롬프트 관련해서 더 추가할만한 내용 있을까?"
+**AI Response**: 추가 가능한 프롬프트 옵션 제시
+**Context**: CONSTRUCTION - Code Generation, Unit 6 프롬프트 확장 검토
+
+---
+
+## Unit 6 프롬프트 추가 + 상세화
+**Timestamp**: 2026-05-20T14:40:58+09:00
+**User Input**: "ㄱㄱ 진행. 그리고 다른부분도 자세하게 잘 이해할 수 있게끔 확인해줘봐."
+**AI Response**: 클러스터 타이틀 프롬프트 추가 + 기존 프롬프트 상세화 (판별 예시 추가)
+**Context**: CONSTRUCTION - Code Generation, Unit 6 프롬프트 확장 + 상세화
+
+---
