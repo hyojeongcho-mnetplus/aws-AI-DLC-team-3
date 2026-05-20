@@ -285,3 +285,20 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation Part 2
 
 ---
+
+## CONSTRUCTION - Code Generation Step 7: Unit 5 Infrastructure
+**Timestamp**: 2026-05-20T13:55:56+09:00
+**User Input**: "저는 ai-dlc 워크플로우를 통해 진행하는 프로젝트에 유닛 5 인프라를 담당합니다. 모든 작업은 별도 브랜치를 생성하여 작업합니다. 또한 기존 작성된 문서를 확인하여 진행합니다. 처음부터 진행하지 않아요"
+**AI Response**: Unit 5 Infrastructure 코드 생성 실행. feature/unit5-infrastructure 브랜치 생성. infra/template.yaml + infra/samconfig.toml 작성. sam validate + --lint 통과.
+**Context**: CONSTRUCTION - Code Generation Step 7, 김효영(DevOps) 담당
+
+### 생성된 파일
+- `infra/template.yaml` — SAM template (Lambda 3개, DynamoDB, S3, SQS DLQ, CloudWatch Alarms, API Gateway)
+- `infra/samconfig.toml` — 배포 설정 (단일 환경, ap-northeast-2)
+
+### 주요 결정
+- dev/prod 환경 분리 불필요 (해커톤 단일 환경)
+- nodejs22.x 사용 (20.x deprecated 2026-04-30)
+- arm64 아키텍처 (비용 최적화)
+
+---

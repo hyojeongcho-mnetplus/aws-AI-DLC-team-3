@@ -1,0 +1,319 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Fan Friction Radar - Mnet Plus fan feedback command center
+
+Parameters:
+  BedrockModelId:
+    Type: String
+    Default: anthropic.claude-4-sonnet-20260514-v1:0
+  BedrockRegion:
+    Type: String
+    Default: us-east-1
+  AppStoreAppId:
+    Type: String
+    Default: '1653240982'
+  GooglePlayPackage:
+    Type: String
+    Default: com.cjenm.mnetplus
+
+Globals:
+  Function:
+    Runtime: nodejs22.x
+    Architectures: [arm64]
+    Timeout: 10
+    MemorySize: 256
+    Environment:
+      Variables:
+        DYNAMODB_TABLE_NAME: !Ref FanFrictionRadarTable
+        S3_BUCKET_NAME: !Ref RawReviewsBucket
+        BEDROCK_MODEL_ID: !Ref BedrockModelId
+        BEDROCK_REGION: !Ref BedrockRegion
+        APP_STORE_APP_ID: !Ref AppStoreAppId
+        GOOGLE_PLAY_PACKAGE: !Ref GooglePlayPackage
+
+Resources:
+  # --- API Gateway ---
+  FanFrictionApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: api
+      Cors:
+        AllowOrigin: "'*'"
+        AllowMethods: "'GET,POST,OPTIONS'"
+        AllowHeaders: "'Content-Type,X-Api-Key'"
+      AccessLogSetting:
+        DestinationArn: !GetAtt ApiAccessLogGroup.Arn
+      MethodSettings:
+        - ResourcePath: /*
+          HttpMethod: '*'
+          ThrottlingBurstLimit: 50
+          ThrottlingRateLimit: 100
+      Auth:
+        ApiKeyRequired: true
+        UsagePlan:
+          CreateUsagePlan: PER_API
+          Throttle:
+            BurstLimit: 50
+            RateLimit: 100
+
+  ApiAccessLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /aws/apigateway/ffr-api-access
+      RetentionInDays: 90
+
+  # --- Lambda Functions ---
+  IngestFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: ffr-ingest
+      Handler: handler.handler
+      CodeUri: ../packages/ingest/
+      MemorySize: 512
+      Timeout: 60
+      Events:
+        Schedule:
+          Type: ScheduleV2
+          Properties:
+            ScheduleExpression: rate(30 minutes)
+            RetryPolicy:
+              MaximumRetryAttempts: 2
+        ManualTrigger:
+          Type: Api
+          Properties:
+            RestApiId: !Ref FanFrictionApi
+            Path: /api/ingest
+            Method: POST
+      DeadLetterQueue:
+        Type: SQS
+        TargetArn: !GetAtt IngestDLQ.Arn
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref FanFrictionRadarTable
+        - S3WritePolicy:
+            BucketName: !Ref RawReviewsBucket
+        - Statement:
+            - Effect: Allow
+              Action: bedrock:InvokeModel
+              Resource: !Sub arn:aws:bedrock:${BedrockRegion}:${AWS::AccountId}:inference-profile/*
+            - Effect: Allow
+              Action: bedrock:InvokeModel
+              Resource: !Sub arn:aws:bedrock:${BedrockRegion}::foundation-model/${BedrockModelId}
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: es2022
+        EntryPoints: [handler.ts]
+        External: ['@aws-sdk/*']
+
+  ApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: ffr-api
+      Handler: handler.handler
+      CodeUri: ../packages/api/
+      MemorySize: 256
+      Timeout: 10
+      Events:
+        GetIssues:
+          Type: Api
+          Properties:
+            RestApiId: !Ref FanFrictionApi
+            Path: /api/issues
+            Method: GET
+        GetIssueDetail:
+          Type: Api
+          Properties:
+            RestApiId: !Ref FanFrictionApi
+            Path: /api/issues/{clusterId}
+            Method: GET
+        CreateAction:
+          Type: Api
+          Properties:
+            RestApiId: !Ref FanFrictionApi
+            Path: /api/actions/{clusterId}
+            Method: POST
+        GetHealth:
+          Type: Api
+          Properties:
+            RestApiId: !Ref FanFrictionApi
+            Path: /api/health
+            Method: GET
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref FanFrictionRadarTable
+        - Statement:
+            - Effect: Allow
+              Action: dynamodb:PutItem
+              Resource: !GetAtt FanFrictionRadarTable.Arn
+            - Effect: Allow
+              Action: bedrock:InvokeModel
+              Resource: !Sub arn:aws:bedrock:${BedrockRegion}:${AWS::AccountId}:inference-profile/*
+            - Effect: Allow
+              Action: bedrock:InvokeModel
+              Resource: !Sub arn:aws:bedrock:${BedrockRegion}::foundation-model/${BedrockModelId}
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: es2022
+        EntryPoints: [handler.ts]
+        External: ['@aws-sdk/*']
+
+  DashboardFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: ffr-dashboard
+      Handler: handler.handler
+      CodeUri: ../packages/dashboard/
+      MemorySize: 128
+      Timeout: 5
+      Events:
+        RootPage:
+          Type: Api
+          Properties:
+            RestApiId: !Ref FanFrictionApi
+            Path: /
+            Method: GET
+        ProxyRoute:
+          Type: Api
+          Properties:
+            RestApiId: !Ref FanFrictionApi
+            Path: /{proxy+}
+            Method: GET
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: es2022
+        EntryPoints: [handler.ts]
+        External: ['@aws-sdk/*']
+
+  # --- Storage ---
+  FanFrictionRadarTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: FanFrictionRadar
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: PK
+          AttributeType: S
+        - AttributeName: SK
+          AttributeType: S
+        - AttributeName: GSI1PK
+          AttributeType: S
+        - AttributeName: GSI1SK
+          AttributeType: S
+      KeySchema:
+        - AttributeName: PK
+          KeyType: HASH
+        - AttributeName: SK
+          KeyType: RANGE
+      GlobalSecondaryIndexes:
+        - IndexName: GSI1
+          KeySchema:
+            - AttributeName: GSI1PK
+              KeyType: HASH
+            - AttributeName: GSI1SK
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+      TimeToLiveSpecification:
+        AttributeName: expiresAt
+        Enabled: true
+
+  RawReviewsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ffr-raw-reviews-${AWS::AccountId}
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      LifecycleConfiguration:
+        Rules:
+          - Id: ArchiveOldReviews
+            Status: Enabled
+            Transitions:
+              - StorageClass: GLACIER
+                TransitionInDays: 90
+
+  # --- DLQ ---
+  IngestDLQ:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ffr-ingest-dlq
+      MessageRetentionPeriod: 1209600
+
+  # --- Lambda Log Groups ---
+  IngestFunctionLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${IngestFunction}
+      RetentionInDays: 30
+
+  ApiFunctionLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${ApiFunction}
+      RetentionInDays: 30
+
+  DashboardFunctionLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${DashboardFunction}
+      RetentionInDays: 30
+
+  # --- Monitoring ---
+  IngestErrorAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: ffr-ingest-errors
+      AlarmDescription: Ingest Lambda error rate exceeded threshold
+      MetricName: Errors
+      Namespace: AWS/Lambda
+      Dimensions:
+        - Name: FunctionName
+          Value: !Ref IngestFunction
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 3
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+
+  IngestDLQAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: ffr-ingest-dlq-messages
+      AlarmDescription: Messages appearing in Ingest DLQ
+      MetricName: ApproximateNumberOfMessagesVisible
+      Namespace: AWS/SQS
+      Dimensions:
+        - Name: QueueName
+          Value: !GetAtt IngestDLQ.QueueName
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+
+Outputs:
+  ApiUrl:
+    Description: API Gateway endpoint URL
+    Value: !Sub https://${FanFrictionApi}.execute-api.${AWS::Region}.amazonaws.com/api
+  IngestFunctionArn:
+    Value: !GetAtt IngestFunction.Arn
+  ApiFunctionArn:
+    Value: !GetAtt ApiFunction.Arn
+  DashboardFunctionArn:
+    Value: !GetAtt DashboardFunction.Arn
+  TableName:
+    Value: !Ref FanFrictionRadarTable
+  BucketName:
+    Value: !Ref RawReviewsBucket
