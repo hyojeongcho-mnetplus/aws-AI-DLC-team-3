@@ -1,0 +1,19 @@
+{
+  "name": "@ffr/api",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/handler.js",
+  "scripts": {
+    "build": "tsup src/handler.ts --format esm",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ffr/shared": "workspace:*",
+    "zod": "3.24.4"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "8.10.149",
+    "typescript": "5.8.3",
+    "tsup": "8.4.0"
+  }
+}

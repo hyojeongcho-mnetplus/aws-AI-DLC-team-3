@@ -285,3 +285,11 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation Part 2
 
 ---
+
+## CONSTRUCTION - Code Generation 역할 분담
+**Timestamp**: 2026-05-20T13:58:01+09:00
+**User Input**: "자 다음으로 unit2, 4, 5 ,6 은 다 다른 팀원이 할꺼고 unit 3을 진행해야해. unit 별 작업먼저 보여줘봐."
+**AI Response**: Unit 3 (API) 작업 목록 제시
+**Context**: CONSTRUCTION - Code Generation, Unit 3 담당 확인
+
+---
