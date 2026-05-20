@@ -144,3 +144,11 @@ dynamoDB에 저장하기 전에 원본 데이터를 s3에 저장해야해.
 **Context**: INCEPTION - Requirements Analysis, 기술 스택 변경
 
 ---
+
+## Requirements Analysis - EventBridge + 수동 트리거 반영
+**Timestamp**: 2026-05-20T12:52:06+09:00
+**User Input**: "ㄱㄱ 반영해줘."
+**AI Response**: PR 코멘트 5,6 반영 — EventBridge Scheduler 자동 수집 + API Gateway 수동 트리거, 동일 Lambda 함수 공유
+**Context**: INCEPTION - Requirements Analysis, PR 리뷰 피드백 반영
+
+---

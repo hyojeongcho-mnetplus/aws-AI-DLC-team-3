@@ -164,10 +164,12 @@ interface ReviewEvent {
 
 ### FR-07: 주기적 수집 및 알림
 
-- **FR-07.1**: 외부 서비스(App Store, Google Play)에서 데이터를 주기적으로 수집한다
-- **FR-07.2**: 수집한 데이터를 정제(분석, 분류)한다
-- **FR-07.3**: 대시보드에서 정제된 데이터를 조회할 수 있다
-- **FR-07.4**: (Should-have) 새로운 P1 이슈 발생 시 알림을 보낸다
+- **FR-07.1**: EventBridge Scheduler로 Lambda를 주기적으로 트리거하여 리뷰를 수집한다
+- **FR-07.2**: 수동 트리거도 지원한다 (API Gateway POST /api/ingest → 같은 Lambda 호출)
+- **FR-07.3**: 수집 Lambda는 하나의 함수로, EventBridge(자동)와 API Gateway(수동) 두 가지 트리거를 모두 지원한다
+- **FR-07.4**: 수집한 데이터를 정제(분석, 분류)한다
+- **FR-07.5**: 대시보드에서 정제된 데이터를 조회할 수 있다
+- **FR-07.6**: (Should-have) 새로운 P1 이슈 발생 시 알림을 보낸다
 
 ---
 
@@ -242,11 +244,15 @@ Optional GSI: GSI1PK, GSI1SK
 ## 6. API 구조
 
 ```
-POST /api/ingest          — connector 실행: 리뷰 수집 → S3 저장 → Bedrock 처리 → DynamoDB 저장
-GET  /api/issues          — rising issues / clusters 조회
-GET  /api/issues/[clusterId] — issue detail + evidence + action brief
-POST /api/actions/[clusterId] — Bedrock action brief 재생성
-GET  /api/health          — source health 조회
+[수집 트리거]
+  자동: EventBridge Scheduler → Ingest Lambda (주기적 실행)
+  수동: API Gateway POST /api/ingest → 같은 Ingest Lambda 호출
+
+[대시보드 API]
+  GET  /api/issues              — rising issues / clusters 조회
+  GET  /api/issues/[clusterId]  — issue detail + evidence + action brief
+  POST /api/actions/[clusterId] — Bedrock action brief 재생성
+  GET  /api/health              — source health 조회
 ```
 
 ---
