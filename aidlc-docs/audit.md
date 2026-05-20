@@ -381,3 +381,11 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation, Unit 6 프롬프트 구현
 
 ---
+
+## Unit 6 - main merge + 프롬프트 재확인
+**Timestamp**: 2026-05-20T14:33:35+09:00
+**User Input**: "아 그 데시보드쪽 작업도 main에 merge되어서 그거 땡겨와서 현재 브랜치에 merge해봐. 그거 바탕으로 지금 프롬프트 한번더 확인해줘."
+**AI Response**: main fetch → 현재 브랜치에 merge → 대시보드 코드 확인 후 프롬프트 정합성 검토
+**Context**: CONSTRUCTION - Code Generation, Unit 6 프롬프트 + 대시보드 정합성 확인
+
+---
