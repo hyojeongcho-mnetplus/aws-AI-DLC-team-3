@@ -62,3 +62,28 @@
 **Context**: INCEPTION - Requirements Analysis, Step 9 - 승인 대기
 
 ---
+
+## Requirements Analysis - 사용자 변경 요청
+**Timestamp**: 2026-05-20T12:32:38+09:00
+**User Input**: "앱스토어/구글플레이 리뷰 → DynamoDB 저장 → deterministic 분류 → Bedrock 요약/액션 브리프 → 운영자 대시보드
+
+
+dynamoDB에 저장하기 전에 원본 데이터를 s3에 저장해야해.
+
+
+앱스토어/구글플레이 리뷰 → s3 원본데이터 저장 -> bedrock 분류 및 요약(deterministic) -> DynamoDB 저장 → 운영자 대시보드
+
+
+이렇게 플로우 변경해줘."
+**AI Response**: 파이프라인 플로우 변경 반영. S3 원본 저장 추가, Bedrock이 분류+요약 통합 담당, DynamoDB는 처리된 결과만 저장.
+**Context**: INCEPTION - Requirements Analysis, 요구사항 변경 요청
+
+---
+
+## 사용자 요청 - 커밋 정책
+**Timestamp**: 2026-05-20T12:34:55+09:00
+**User Input**: "앞으로 변경할때마다 커밋해줘."
+**AI Response**: 확인. 이후 파일 변경 시마다 git commit을 수행합니다.
+**Context**: 워크플로우 전반 설정
+
+---
