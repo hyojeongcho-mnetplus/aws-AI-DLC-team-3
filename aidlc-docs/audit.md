@@ -357,3 +357,27 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation, 브랜치 동기화
 
 ---
+
+## main 동기화
+**Timestamp**: 2026-05-20T14:23:05+09:00
+**User Input**: "자 메인으로 이동해서 풀땡기고 싱크 맞춰봐."
+**AI Response**: main checkout + pull 완료. PR #2 (Unit 3) + PR #4 (Unit 2) 모두 merge된 상태 확인.
+**Context**: CONSTRUCTION - Code Generation, main 동기화
+
+---
+
+## Unit 6 프롬프트 확인 요청
+**Timestamp**: 2026-05-20T14:26:12+09:00
+**User Input**: "그 unit6의 내용중에 프롬프트 용있잖아. 확인해봐."
+**AI Response**: Unit 6 Bedrock 프롬프트 Functional Design 문서 확인
+**Context**: CONSTRUCTION - Code Generation, Unit 6 프롬프트 확인
+
+---
+
+## Unit 6 프롬프트 작성 요청
+**Timestamp**: 2026-05-20T14:28:39+09:00
+**User Input**: "그러면 브랜치 하나 만들어서 프롬프트 관련 내용을 어떻게 입력하면 좋을지 정리해줘. 특히, 목적은 여러 정보를 수집해서 그 데이터를 바탕으로 알맞게 대시보들을 운영자 또는 내부 관계자한테 잘 보여줄 수 있는 프롬프트를 작성해줘봐,"
+**AI Response**: feature/unit-6-prompts 브랜치 생성. 프롬프트 코드 작성.
+**Context**: CONSTRUCTION - Code Generation, Unit 6 프롬프트 구현
+
+---
