@@ -136,3 +136,11 @@ dynamoDB에 저장하기 전에 원본 데이터를 s3에 저장해야해.
 **Context**: INCEPTION - Requirements Analysis, PR 리뷰 피드백 반영
 
 ---
+
+## Requirements Analysis - 프레임워크 변경 요청
+**Timestamp**: 2026-05-20T12:49:13+09:00
+**User Input**: "자 여기서 next.js 쓰는건 과한거 같아. vite 8 rolldown 버전으로 가면 좋을 것 같아."
+**AI Response**: Next.js 15 → Vite 8 (Rolldown)으로 프레임워크 변경 반영. 배포도 Lambda+API Gateway에서 정적 호스팅+별도 API로 분리 가능성 확인.
+**Context**: INCEPTION - Requirements Analysis, 기술 스택 변경
+
+---
