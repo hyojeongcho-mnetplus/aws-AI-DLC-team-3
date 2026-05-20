@@ -40,19 +40,12 @@ Resources:
       Cors:
         AllowOrigin: "'*'"
         AllowMethods: "'GET,POST,OPTIONS'"
-        AllowHeaders: "'Content-Type,X-Api-Key'"
+        AllowHeaders: "'Content-Type'"
       MethodSettings:
         - ResourcePath: /*
           HttpMethod: '*'
           ThrottlingBurstLimit: 50
           ThrottlingRateLimit: 100
-      Auth:
-        ApiKeyRequired: true
-        UsagePlan:
-          CreateUsagePlan: PER_API
-          Throttle:
-            BurstLimit: 50
-            RateLimit: 100
 
   # --- Lambda Functions ---
   IngestFunction:
