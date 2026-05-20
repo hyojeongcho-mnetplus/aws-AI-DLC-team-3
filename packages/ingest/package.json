@@ -1,0 +1,21 @@
+{
+  "name": "@ffr/ingest",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/handler.js",
+  "scripts": {
+    "build": "tsup",
+    "build:lambda": "tsup",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ffr/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3",
+    "tsup": "8.4.0",
+    "vitest": "3.1.3",
+    "fast-check": "4.1.1",
+    "@types/aws-lambda": "8.10.147"
+  }
+}
