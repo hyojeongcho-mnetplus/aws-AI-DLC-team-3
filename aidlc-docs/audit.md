@@ -479,3 +479,11 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation, 프롬프트-코드 연결
 
 ---
+
+## 프롬프트 전체 연결
+**Timestamp**: 2026-05-20T15:19:58+09:00
+**User Input**: "흠 ㄱㄱ"
+**AI Response**: Ingest classification.service.ts에서 buildClassificationPrompt 사용, cluster.service.ts에서 buildClusterTitlePrompt 사용하도록 연결
+**Context**: CONSTRUCTION - Code Generation, 프롬프트 전체 연결
+
+---

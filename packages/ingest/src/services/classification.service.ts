@@ -7,6 +7,7 @@ import {
   ERROR_LEVEL,
   AI_MODE,
   invokeModel,
+  buildClassificationPrompt,
   createLogger,
 } from '@ffr/shared';
 
@@ -27,7 +28,7 @@ async function classifyWithBedrock(reviews: ReviewEvent[]): Promise<ProcessedRev
 
   for (let i = 0; i < reviews.length; i += BATCH_SIZE) {
     const batch = reviews.slice(i, i + BATCH_SIZE);
-    const prompt = buildPrompt(batch);
+    const prompt = buildClassificationPrompt(batch);
 
     let attempt = 0;
     let response: string | undefined;
@@ -60,20 +61,6 @@ async function classifyWithBedrock(reviews: ReviewEvent[]): Promise<ProcessedRev
     }
   }
   return results;
-}
-
-function buildPrompt(reviews: ReviewEvent[]): string {
-  const items = reviews.map((r) => ({ id: r.id, body: r.body.slice(0, 500), rating: r.rating }));
-  return `다음 앱 리뷰들을 분류해주세요. 각 리뷰에 대해 category, issueType, errorLevel, summary를 JSON으로 반환하세요.
-
-카테고리: vote, ads, payment, live_video, other
-이슈타입: error, not_an_issue, feature_request, spec_misunderstanding
-에러등급(issueType이 error일 때만): 1(긴급), 2(대기가능), 3(인지)
-
-JSON 형식: {"results":[{"reviewId":"...","category":"...","issueType":"...","errorLevel":1,"summary":"..."}]}
-
-리뷰 목록:
-${JSON.stringify(items)}`;
 }
 
 const KEYWORD_MAP: Record<string, FeatureCategory> = {

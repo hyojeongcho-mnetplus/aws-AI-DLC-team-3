@@ -4,6 +4,8 @@ import {
   ISSUE_TYPE,
   clusterRepo,
   generateClusterId,
+  invokeModel,
+  buildClusterTitlePrompt,
   createLogger,
 } from '@ffr/shared';
 
@@ -27,6 +29,9 @@ export async function updateClusters(reviews: ProcessedReview[]): Promise<void> 
         cluster.errorLevel = review.errorLevel ?? cluster.errorLevel;
         cluster.severity = calcSeverity(cluster);
         cluster.updatedAt = now;
+        if (cluster.reviewCount === 3) {
+          cluster.title = await generateClusterTitle(items.slice(0, 10));
+        }
         await clusterRepo.putCluster(cluster);
       } else {
         const newCluster: ClusterSnapshot = {
@@ -62,4 +67,15 @@ function groupByCategory(reviews: ProcessedReview[]): Record<string, ProcessedRe
     (map[r.category] ??= []).push(r);
   }
   return map;
+}
+
+async function generateClusterTitle(reviews: ProcessedReview[]): Promise<string> {
+  try {
+    const prompt = buildClusterTitlePrompt(reviews);
+    const raw = await invokeModel(prompt);
+    const parsed = JSON.parse(raw);
+    return parsed.title ?? reviews[0].summary;
+  } catch {
+    return reviews[0].summary;
+  }
 }
