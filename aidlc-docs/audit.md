@@ -176,3 +176,16 @@ dynamoDB에 저장하기 전에 원본 데이터를 s3에 저장해야해.
 **Context**: INCEPTION - Requirements Analysis
 
 ---
+
+## Requirements Analysis - 인프라 구조 변경 + 일관성 정리
+**Timestamp**: 2026-05-20T13:01:10+09:00
+**User Input**: "인프라는 다음과 같이해줘
+
+대시보드: 정적 페이지로 lambda로 서빙
+api: 이거도 lambda
+수집: 이거도 lambda
+이 내용도 빠진것 같은데 확인해줘."
+**AI Response**: 인프라 전체 Lambda 기반으로 변경. 문서 내 seed fallback 잔여 표현 정리.
+**Context**: INCEPTION - Requirements Analysis, 인프라 변경 + 일관성 정리
+
+---
