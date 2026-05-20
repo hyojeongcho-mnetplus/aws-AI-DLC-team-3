@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_BASE ?? '';
+const BASE = import.meta.env.VITE_API_BASE ?? '/api';
 
 export class ApiError extends Error {
   constructor(public status: number, message: string) {
