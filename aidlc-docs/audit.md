@@ -245,3 +245,11 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Functional Design, Unit 1
 
 ---
+
+## CONSTRUCTION - Unit 2 Functional Design 완료
+**Timestamp**: 2026-05-20T13:38:45+09:00
+**User Input**: "ㄱㄱ 다음"
+**AI Response**: Unit 1 승인, Unit 2 (Ingest Pipeline) Functional Design 완료
+**Context**: CONSTRUCTION - Functional Design, Unit 2
+
+---
