@@ -285,3 +285,75 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation Part 2
 
 ---
+
+## CONSTRUCTION - Code Generation 역할 분담
+**Timestamp**: 2026-05-20T13:58:01+09:00
+**User Input**: "자 다음으로 unit2, 4, 5 ,6 은 다 다른 팀원이 할꺼고 unit 3을 진행해야해. unit 별 작업먼저 보여줘봐."
+**AI Response**: Unit 3 (API) 작업 목록 제시
+**Context**: CONSTRUCTION - Code Generation, Unit 3 담당 확인
+
+---
+
+## CONSTRUCTION - Code Generation Unit 3 완료
+**Timestamp**: 2026-05-20T14:03:41+09:00
+**User Input**: "자자 하기 전에 지금 main에 자동 push 되었어. 이거 다시 돌리거 지금 작업 내용 브랜치 하나 파서 거기에 커밋해서 pr로 올려줘봐."
+**AI Response**: main을 12ffe28로 force push 되돌림. feature/unit-3-api 브랜치 생성. PR #2 생성.
+**Context**: CONSTRUCTION - Code Generation, 브랜치 정리
+
+---
+
+## CONSTRUCTION - Unit 3 테스트 작성
+**Timestamp**: 2026-05-20T14:06:08+09:00
+**User Input**: "ㄱㄱ 진행."
+**AI Response**: validation.test.ts (12 tests) + id.test.ts (4 PBT tests) 작성. 전체 16 tests 통과.
+**Context**: CONSTRUCTION - Code Generation, 테스트 작성
+
+---
+
+## CONSTRUCTION - 빌드/테스트 검증
+**Timestamp**: 2026-05-20T14:07:17+09:00
+**User Input**: "ㄱㄱ 진행."
+**AI Response**: pnpm install → shared build → api build → vitest run. 16 tests passed.
+**Context**: CONSTRUCTION - Code Generation, Unit 3 단독 빌드/테스트 검증
+
+---
+
+## CONSTRUCTION - 상태 수정
+**Timestamp**: 2026-05-20T14:11:51+09:00
+**User Input**: "현재 단계를 Build and Test로 변경 이거 변경하는게 지금 시점에서 맞아?"
+**AI Response**: 맞지 않음. Build and Test는 모든 Unit 완료 후. aidlc-state.md를 Code Generation (Unit 3 완료, 나머지 대기)로 수정.
+**Context**: CONSTRUCTION - 상태 추적 수정
+
+---
+
+## 사용자 지시 - AI-DLC 워크플로우 준수
+**Timestamp**: 2026-05-20T14:14:58+09:00
+**User Input**: "항상 언제 어디서나 ai-dlc workflow기반으로 개발해야해."
+**AI Response**: 확인. 모든 인터랙션에서 AI-DLC 워크플로우 규칙을 준수합니다 — audit.md 로깅, aidlc-state.md 업데이트, 단계별 승인 게이트, 변경 시 커밋.
+**Context**: 전반 설정 — AI-DLC 워크플로우 엄격 준수 지시
+
+---
+
+## 사용자 질문 - 다음 작업
+**Timestamp**: 2026-05-20T14:16:06+09:00
+**User Input**: "그럼 ai-dlc 워크플로우 기반으로 뭐하면 될까? unit 3검증을 더 해봐야하나?"
+**AI Response**: 현재 상태 분석 및 다음 작업 옵션 제시
+**Context**: CONSTRUCTION - Code Generation, Unit 3 완료 후 다음 작업 논의
+
+---
+
+## CONSTRUCTION - Unit 3 테스트 보강
+**Timestamp**: 2026-05-20T14:16:55+09:00
+**User Input**: "A ㄱㄱ"
+**AI Response**: Unit 3 테스트 보강 진행 — handler 라우팅 + routes 테스트 작성
+**Context**: CONSTRUCTION - Code Generation, Unit 3 테스트 강화
+
+---
+
+## CONSTRUCTION - main fetch + conflict 해결
+**Timestamp**: 2026-05-20T14:19:03+09:00
+**User Input**: "main fetch 땡겨서 confict 해결해줘."
+**AI Response**: origin/main fetch 후 rebase/merge로 conflict 해결
+**Context**: CONSTRUCTION - Code Generation, 브랜치 동기화
+
+---
