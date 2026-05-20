@@ -261,3 +261,11 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Functional Design, Unit 3~6 일괄 완료
 
 ---
+
+## CONSTRUCTION - NFR Requirements + Infrastructure Design 완료
+**Timestamp**: 2026-05-20T13:43:02+09:00
+**User Input**: "ㄱㄱ 진행"
+**AI Response**: NFR Requirements 완료 (Security 15규칙, 성능, 테스트, 가용성). NFR Design SKIP. Infrastructure Design 완료 (SAM template, 전체 AWS 리소스 정의). Code Generation 준비.
+**Context**: CONSTRUCTION - NFR Requirements + Infrastructure Design 완료, Code Generation 대기
+
+---

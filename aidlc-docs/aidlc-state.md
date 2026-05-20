@@ -4,7 +4,7 @@
 - **Project Name**: Mnet Plus Fan Friction Radar
 - **Project Type**: Greenfield
 - **Start Date**: 2026-05-20T12:15:05+09:00
-- **Current Stage**: CONSTRUCTION - Functional Design
+- **Current Stage**: CONSTRUCTION - Code Generation
 
 ## Workspace State
 - **Existing Code**: No
@@ -35,9 +35,9 @@
 
 ### CONSTRUCTION PHASE (per-unit)
 - [x] Functional Design - EXECUTE
-- [ ] NFR Requirements - EXECUTE
+- [x] NFR Requirements - EXECUTE
 - [ ] NFR Design - SKIP
-- [ ] Infrastructure Design - EXECUTE
+- [x] Infrastructure Design - EXECUTE
 - [ ] Code Generation - EXECUTE
 - [ ] Build and Test - EXECUTE
 
