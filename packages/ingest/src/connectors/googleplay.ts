@@ -1,48 +1,36 @@
 import { type ReviewEvent, generateReviewId, createLogger } from '@ffr/shared';
+import gplay from 'google-play-scraper';
 
 const logger = createLogger('googleplay-connector');
 
-interface GooglePlayReview {
-  reviewId: string;
-  userName: string;
-  score: number;
-  text: string;
-  date: string;
-  url?: string;
-}
-
 export async function fetchGooglePlayReviews(packageName: string): Promise<ReviewEvent[]> {
-  const url = `https://store.googleapis.com/reviews?id=${packageName}&num=50&hl=ko`;
-  const res = await fetchWithRetry(url);
-  const json = await res.json();
-  const reviews: GooglePlayReview[] = json?.reviews ?? [];
+  try {
+    const result = await gplay.reviews({
+      appId: packageName,
+      lang: 'ko',
+      country: 'kr',
+      num: 50,
+      sort: gplay.sort.NEWEST,
+    });
 
-  logger.info('fetched', { count: reviews.length });
+    const reviews = result.data;
+    logger.info('fetched', { count: reviews.length });
 
-  return reviews.map((r) => ({
-    id: generateReviewId('googleplay', r.reviewId),
-    source: 'googleplay' as const,
-    sourceReviewId: r.reviewId,
-    sourceUrl: r.url ?? `https://play.google.com/store/apps/details?id=${packageName}&reviewId=${r.reviewId}`,
-    author: r.userName,
-    rating: r.score,
-    body: r.text,
-    language: 'ko',
-    createdAt: r.date,
-    collectedAt: new Date().toISOString(),
-  }));
-}
-
-async function fetchWithRetry(url: string, retries = 3): Promise<Response> {
-  for (let i = 0; i < retries; i++) {
-    try {
-      const res = await fetch(url, { signal: AbortSignal.timeout(10_000) });
-      if (res.ok) return res;
-      throw new Error(`HTTP ${res.status}`);
-    } catch (err) {
-      if (i === retries - 1) throw err;
-      await new Promise((r) => setTimeout(r, 1000 * 2 ** i));
-    }
+    return reviews.map((r) => ({
+      id: generateReviewId('googleplay', r.id),
+      source: 'googleplay' as const,
+      sourceReviewId: r.id,
+      sourceUrl: r.url ?? `https://play.google.com/store/apps/details?id=${packageName}&reviewId=${r.id}`,
+      author: r.userName,
+      rating: r.score,
+      title: r.title ?? '',
+      body: r.text,
+      language: 'ko',
+      createdAt: r.date ? new Date(r.date).toISOString() : new Date().toISOString(),
+      collectedAt: new Date().toISOString(),
+    }));
+  } catch (err) {
+    logger.error('fetch failed', { error: String(err) });
+    return [];
   }
-  throw new Error('unreachable');
 }

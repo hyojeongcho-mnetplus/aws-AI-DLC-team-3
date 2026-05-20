@@ -14,7 +14,7 @@ Parameters:
     Default: '1653240982'
   GooglePlayPackage:
     Type: String
-    Default: com.cjenm.mnetplus
+    Default: world.mnetplus
 
 Globals:
   Function:
