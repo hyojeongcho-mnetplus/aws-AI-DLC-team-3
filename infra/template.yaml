@@ -11,7 +11,7 @@ Parameters:
     Default: us-east-1
   AppStoreAppId:
     Type: String
-    Default: '1653240982'
+    Default: '6443405421'
   GooglePlayPackage:
     Type: String
     Default: world.mnetplus
@@ -54,8 +54,8 @@ Resources:
       FunctionName: ffr-ingest
       Handler: handler.handler
       CodeUri: ../packages/ingest/dist/
-      MemorySize: 512
-      Timeout: 60
+      MemorySize: 1024
+      Timeout: 120
       Events:
         Schedule:
           Type: ScheduleV2

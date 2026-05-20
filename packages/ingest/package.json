@@ -10,8 +10,9 @@
   },
   "dependencies": {
     "@ffr/shared": "workspace:*",
+    "@sparticuz/chromium": "133.0.0",
     "google-play-scraper": "^10.1.2",
-    "playwright": "1.52.0"
+    "playwright-core": "1.52.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "8.10.147",
