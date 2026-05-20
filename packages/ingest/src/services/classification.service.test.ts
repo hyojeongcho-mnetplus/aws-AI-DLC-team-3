@@ -16,8 +16,8 @@ const reviewArb: fc.Arbitrary<ReviewEvent> = fc.record({
   rating: fc.integer({ min: 1, max: 5 }),
   body: fc.string({ minLength: 1, maxLength: 500 }),
   language: fc.constant('ko'),
-  createdAt: fc.date().map((d) => d.toISOString()),
-  collectedAt: fc.date().map((d) => d.toISOString()),
+  createdAt: fc.integer({ min: 1577836800000, max: 1893456000000 }).map((ts) => new Date(ts).toISOString()),
+  collectedAt: fc.integer({ min: 1577836800000, max: 1893456000000 }).map((ts) => new Date(ts).toISOString()),
 });
 
 describe('fallbackClassify', () => {

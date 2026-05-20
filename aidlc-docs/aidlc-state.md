@@ -4,7 +4,7 @@
 - **Project Name**: Mnet Plus Fan Friction Radar
 - **Project Type**: Greenfield
 - **Start Date**: 2026-05-20T12:15:05+09:00
-- **Current Stage**: CONSTRUCTION - Code Generation (프롬프트 연결 작업)
+- **Current Stage**: CONSTRUCTION - Build and Test (완료)
 
 ## Workspace State
 - **Existing Code**: No
@@ -38,8 +38,8 @@
 - [x] NFR Requirements - EXECUTE
 - [ ] NFR Design - SKIP
 - [x] Infrastructure Design - EXECUTE
-- [x] Code Generation - EXECUTE (전체 Unit main merge 완료)
-- [ ] Build and Test - EXECUTE
+- [x] Code Generation - EXECUTE (전체 완료)
+- [x] Build and Test - EXECUTE
 
 ### OPERATIONS PHASE
 - [ ] Operations (PLACEHOLDER)

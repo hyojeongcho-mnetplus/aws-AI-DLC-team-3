@@ -7,50 +7,50 @@
 ---
 
 ## Step 1: 프로젝트 초기화
-- [ ] pnpm workspace 설정 (pnpm-workspace.yaml, root package.json)
-- [ ] TypeScript 설정 (tsconfig.json base + 각 패키지별)
-- [ ] ESLint + Prettier 설정
-- [ ] .env.example 생성
-- [ ] .gitignore 업데이트
+- [x] pnpm workspace 설정 (pnpm-workspace.yaml, root package.json)
+- [x] TypeScript 설정 (tsconfig.json base + 각 패키지별)
+- [x] ESLint + Prettier 설정
+- [x] .env.example 생성
+- [x] .gitignore 업데이트
 
 ## Step 2: Unit 1 — Shared Foundation
-- [ ] packages/shared/package.json
-- [ ] packages/shared/src/types/index.ts (도메인 타입, 상수)
-- [ ] packages/shared/src/clients/dynamodb.ts (DynamoDBDocumentClient)
-- [ ] packages/shared/src/clients/s3.ts (S3Client)
-- [ ] packages/shared/src/clients/bedrock.ts (BedrockRuntimeClient)
-- [ ] packages/shared/src/repository/review.repository.ts
-- [ ] packages/shared/src/repository/cluster.repository.ts
-- [ ] packages/shared/src/repository/action-brief.repository.ts
-- [ ] packages/shared/src/repository/source-health.repository.ts
-- [ ] packages/shared/src/utils/id.ts (generateReviewId, generateClusterId)
-- [ ] packages/shared/src/utils/logger.ts (구조화 로그)
-- [ ] packages/shared/src/index.ts (barrel export)
+- [x] packages/shared/package.json
+- [x] packages/shared/src/types/index.ts (도메인 타입, 상수)
+- [x] packages/shared/src/clients/dynamodb.ts (DynamoDBDocumentClient)
+- [x] packages/shared/src/clients/s3.ts (S3Client)
+- [x] packages/shared/src/clients/bedrock.ts (BedrockRuntimeClient)
+- [x] packages/shared/src/repository/review.repository.ts
+- [x] packages/shared/src/repository/cluster.repository.ts
+- [x] packages/shared/src/repository/action-brief.repository.ts
+- [x] packages/shared/src/repository/source-health.repository.ts
+- [x] packages/shared/src/utils/id.ts (generateReviewId, generateClusterId)
+- [x] packages/shared/src/utils/logger.ts (구조화 로그)
+- [x] packages/shared/src/index.ts (barrel export)
 
 ## Step 3: Unit 6 — Bedrock Prompts
-- [ ] packages/shared/src/prompts/classification.ts (분류+요약 프롬프트)
-- [ ] packages/shared/src/prompts/action-brief.ts (액션 브리프 프롬프트)
+- [x] packages/shared/src/prompts/classification.ts (분류+요약 프롬프트)
+- [x] packages/shared/src/prompts/action-brief.ts (액션 브리프 프롬프트)
 - [ ] fixtures/appstore-reviews-sample.json (샘플 5개)
 - [ ] fixtures/googleplay-reviews-sample.json (샘플 5개)
 
 ## Step 4: Unit 2 — Ingest Pipeline
-- [ ] packages/ingest/package.json
-- [ ] packages/ingest/src/handler.ts (Lambda 핸들러)
-- [ ] packages/ingest/src/connectors/appstore.ts (RSS connector)
-- [ ] packages/ingest/src/connectors/googleplay.ts (Google Play connector)
-- [ ] packages/ingest/src/services/ingest.service.ts (오케스트레이션)
-- [ ] packages/ingest/src/services/classification.service.ts (Bedrock + fallback)
-- [ ] packages/ingest/src/services/cluster.service.ts (클러스터 업데이트)
+- [x] packages/ingest/package.json
+- [x] packages/ingest/src/handler.ts (Lambda 핸들러)
+- [x] packages/ingest/src/connectors/appstore.ts (RSS connector)
+- [x] packages/ingest/src/connectors/googleplay.ts (Google Play connector)
+- [x] packages/ingest/src/services/ingest.service.ts (오케스트레이션)
+- [x] packages/ingest/src/services/classification.service.ts (Bedrock + fallback)
+- [x] packages/ingest/src/services/cluster.service.ts (클러스터 업데이트)
 
 ## Step 5: Unit 3 — API
-- [ ] packages/api/package.json
-- [ ] packages/api/src/handler.ts (Lambda 핸들러 + 라우팅)
-- [ ] packages/api/src/routes/issues.ts
-- [ ] packages/api/src/routes/actions.ts
-- [ ] packages/api/src/routes/health.ts
-- [ ] packages/api/src/middleware/validation.ts (zod)
-- [ ] packages/api/src/middleware/security-headers.ts
-- [ ] packages/api/src/middleware/error-handler.ts
+- [x] packages/api/package.json
+- [x] packages/api/src/handler.ts (Lambda 핸들러 + 라우팅)
+- [x] packages/api/src/routes/issues.ts
+- [x] packages/api/src/routes/actions.ts
+- [x] packages/api/src/routes/health.ts
+- [x] packages/api/src/middleware/validation.ts (zod)
+- [x] packages/api/src/middleware/security-headers.ts
+- [x] packages/api/src/middleware/error-handler.ts
 
 ## Step 6: Unit 4 — Dashboard UI
 - [x] packages/dashboard/package.json (Vite + React + Tailwind + shadcn/ui)
@@ -74,11 +74,11 @@
 - [x] infra/samconfig.toml (배포 설정)
 
 ## Step 8: 테스트
-- [ ] packages/shared/src/utils/id.test.ts (PBT: generateReviewId invariant)
-- [ ] packages/ingest/src/services/classification.service.test.ts (PBT: fallbackClassify)
-- [ ] packages/api/src/middleware/validation.test.ts
-- [ ] vitest.config.ts (workspace root)
+- [x] packages/shared/src/utils/id.test.ts (PBT: generateReviewId invariant)
+- [x] packages/ingest/src/services/classification.service.test.ts (PBT: fallbackClassify)
+- [x] packages/api/src/middleware/validation.test.ts
+- [x] vitest.config.ts (workspace root)
 
 ## Step 9: 빌드 스크립트
-- [ ] root package.json scripts (build, test, deploy)
-- [ ] 각 패키지 build 설정 (tsup 또는 esbuild)
+- [x] root package.json scripts (build, test, deploy)
+- [x] 각 패키지 build 설정 (tsup 또는 esbuild)
