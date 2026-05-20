@@ -4,7 +4,7 @@
 - **Project Name**: Mnet Plus Fan Friction Radar
 - **Project Type**: Greenfield
 - **Start Date**: 2026-05-20T12:15:05+09:00
-- **Current Stage**: INCEPTION - Requirements Analysis
+- **Current Stage**: INCEPTION - Workflow Planning
 
 ## Workspace State
 - **Existing Code**: No
@@ -26,16 +26,20 @@
 
 ### INCEPTION PHASE
 - [x] Workspace Detection
-- [ ] Reverse Engineering (SKIP - Greenfield)
+- [x] Reverse Engineering (SKIP - Greenfield)
 - [x] Requirements Analysis
-- [ ] User Stories
-- [ ] Workflow Planning
-- [ ] Application Design
-- [ ] Units Generation
+- [x] User Stories (SKIP - 해커톤, 요구사항 명확)
+- [x] Workflow Planning
+- [ ] Application Design - EXECUTE
+- [ ] Units Generation - EXECUTE
 
-### CONSTRUCTION PHASE
-- [ ] Per-Unit Loop
-- [ ] Build and Test
+### CONSTRUCTION PHASE (per-unit)
+- [ ] Functional Design - EXECUTE
+- [ ] NFR Requirements - EXECUTE
+- [ ] NFR Design - SKIP
+- [ ] Infrastructure Design - EXECUTE
+- [ ] Code Generation - EXECUTE
+- [ ] Build and Test - EXECUTE
 
 ### OPERATIONS PHASE
 - [ ] Operations (PLACEHOLDER)
