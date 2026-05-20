@@ -53,21 +53,21 @@
 - [ ] packages/api/src/middleware/error-handler.ts
 
 ## Step 6: Unit 4 — Dashboard UI
-- [ ] packages/dashboard/package.json (Vite + React + Tailwind + shadcn/ui)
-- [ ] packages/dashboard/vite.config.ts
-- [ ] packages/dashboard/tailwind.config.ts
-- [ ] packages/dashboard/src/main.tsx
-- [ ] packages/dashboard/src/App.tsx
-- [ ] packages/dashboard/src/components/CommandCenter.tsx
-- [ ] packages/dashboard/src/components/SourceHealthRail.tsx
-- [ ] packages/dashboard/src/components/RisingIssuesList.tsx
-- [ ] packages/dashboard/src/components/IssueDetail.tsx
-- [ ] packages/dashboard/src/components/EvidencePanel.tsx
-- [ ] packages/dashboard/src/components/ActionBriefPanel.tsx
-- [ ] packages/dashboard/src/components/ErrorScreen.tsx
-- [ ] packages/dashboard/src/hooks/usePolling.ts
-- [ ] packages/dashboard/src/lib/api.ts (fetch wrapper)
-- [ ] packages/dashboard/src/serve-handler.ts (Dashboard Lambda 핸들러)
+- [x] packages/dashboard/package.json (Vite + React + Tailwind + shadcn/ui)
+- [x] packages/dashboard/vite.config.ts
+- [x] packages/dashboard/tailwind.config.ts
+- [x] packages/dashboard/src/main.tsx
+- [x] packages/dashboard/src/App.tsx
+- [x] packages/dashboard/src/components/CommandCenter.tsx
+- [x] packages/dashboard/src/components/SourceHealthRail.tsx
+- [x] packages/dashboard/src/components/RisingIssuesList.tsx
+- [x] packages/dashboard/src/components/IssueDetail.tsx
+- [x] packages/dashboard/src/components/EvidencePanel.tsx
+- [x] packages/dashboard/src/components/ActionBriefPanel.tsx
+- [x] packages/dashboard/src/components/ErrorScreen.tsx
+- [x] packages/dashboard/src/hooks/usePolling.ts
+- [x] packages/dashboard/src/lib/api.ts (fetch wrapper)
+- [x] packages/dashboard/src/serve-handler.ts (Dashboard Lambda 핸들러)
 
 ## Step 7: Unit 5 — Infrastructure
 - [x] infra/template.yaml (SAM template)
