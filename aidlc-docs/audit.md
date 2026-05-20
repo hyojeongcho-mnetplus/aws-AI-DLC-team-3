@@ -286,6 +286,22 @@ api: 이거도 lambda
 
 ---
 
+## CONSTRUCTION - Code Generation Unit 4 (Dashboard UI)
+**Timestamp**: 2026-05-20T13:58:57+09:00
+**User Input**: "네 진행해주세요"
+**AI Response**: Unit 4 Dashboard UI 코드 생성 완료. 15개 파일 생성: package.json, vite.config.ts, tailwind.config.ts, tsconfig.json, index.html, postcss.config.js, src/index.css, src/main.tsx, src/App.tsx, src/lib/api.ts, src/hooks/usePolling.ts, src/components/ErrorScreen.tsx, src/components/SourceHealthRail.tsx, src/components/EvidencePanel.tsx, src/components/ActionBriefPanel.tsx, src/components/IssueDetail.tsx, src/components/RisingIssuesList.tsx, src/components/CommandCenter.tsx, src/serve-handler.ts
+**Context**: CONSTRUCTION - Code Generation Part 2, Unit 4 Dashboard UI 완료
+
+---
+
+## CONSTRUCTION - Code Generation Unit 4 (Dashboard UI Tests)
+**Timestamp**: 2026-05-20T14:03:40+09:00
+**User Input**: "테스트 코드도 작성해주세요"
+**AI Response**: Unit 4 Dashboard UI 테스트 코드 생성 완료. 5개 테스트 파일 (15개 테스트 케이스): usePolling.test.ts, api.test.ts, ErrorScreen.test.tsx, SourceHealthRail.test.tsx, RisingIssuesList.test.tsx. 테스트 의존성 추가 (@testing-library/react, jest-dom, jsdom).
+**Context**: CONSTRUCTION - Code Generation Part 2, Unit 4 Dashboard UI 테스트
+
+---
+
 ## CONSTRUCTION - Code Generation 역할 분담
 **Timestamp**: 2026-05-20T13:58:01+09:00
 **User Input**: "자 다음으로 unit2, 4, 5 ,6 은 다 다른 팀원이 할꺼고 unit 3을 진행해야해. unit 별 작업먼저 보여줘봐."
