@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@ffr/shared": "workspace:*",
-    "google-play-scraper": "^10.1.2"
+    "google-play-scraper": "^10.1.2",
+    "playwright": "1.52.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "8.10.147",
