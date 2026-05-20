@@ -1,11 +1,20 @@
-import { useState } from 'react';
-import type { ActionBrief } from '@ffr/shared';
-import { api } from '../lib/api';
+import { useState } from "react";
+import type { ActionBrief } from "@ffr/shared";
+import { api } from "../lib/api";
 
-const MODE_STYLE: Record<string, string> = {
-  AI_ENHANCED: 'bg-blue-900 text-blue-300',
-  DETERMINISTIC: 'bg-gray-700 text-gray-300',
-  NEEDS_REVIEW: 'bg-orange-900 text-orange-300',
+const MODE_STYLE: Record<string, { className: string; label: string }> = {
+  AI_ENHANCED: {
+    className: "border-blue-500/50 bg-blue-500/15 text-blue-100",
+    label: "AI ENHANCED",
+  },
+  DETERMINISTIC: {
+    className: "border-slate-600 bg-slate-800 text-slate-200",
+    label: "DETERMINISTIC",
+  },
+  NEEDS_REVIEW: {
+    className: "border-orange-500/50 bg-orange-500/15 text-orange-100",
+    label: "NEEDS REVIEW",
+  },
 };
 
 interface Props {
@@ -29,27 +38,79 @@ export function ActionBriefPanel({ actionBrief, clusterId }: Props) {
 
   if (!brief) {
     return (
-      <div className="rounded border border-gray-800 bg-gray-900 p-4">
-        <p className="text-sm text-gray-500">액션 브리프 없음</p>
-        <button onClick={regenerate} disabled={loading} className="mt-2 rounded bg-blue-700 px-3 py-1.5 text-xs text-white hover:bg-blue-600 disabled:opacity-50">
-          {loading ? '생성 중...' : '생성'}
+      <section
+        className="rounded-2xl border border-blue-900/50 bg-blue-950/20 p-4"
+        aria-labelledby="action-brief-title"
+      >
+        <p className="command-label text-blue-300">Action</p>
+        <h3
+          id="action-brief-title"
+          className="mt-1 text-base font-bold text-white"
+        >
+          액션 브리프 없음
+        </h3>
+        <p className="mt-2 text-sm leading-6 text-slate-400">
+          선택한 이슈에 대한 담당팀별 대응 제안을 생성할 수 있습니다.
+        </p>
+        <button
+          onClick={regenerate}
+          disabled={loading}
+          className="focus-command mt-4 rounded-xl bg-blue-600 px-4 py-2 text-sm font-bold text-white hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          {loading ? "생성 중..." : "액션 브리프 생성"}
         </button>
-      </div>
+      </section>
     );
   }
 
+  const mode = MODE_STYLE[brief.aiMode] ?? {
+    className: "border-slate-600 bg-slate-800 text-slate-200",
+    label: brief.aiMode,
+  };
+
   return (
-    <div className="space-y-2 rounded border border-gray-800 bg-gray-900 p-4">
-      <div className="flex items-center gap-2">
-        <h3 className="text-sm font-semibold text-gray-400">액션 브리프</h3>
-        <span className={`rounded px-1.5 py-0.5 text-xs ${MODE_STYLE[brief.aiMode] ?? ''}`}>{brief.aiMode}</span>
+    <section
+      className="rounded-2xl border border-blue-900/40 bg-blue-950/15 p-4"
+      aria-labelledby="action-brief-title"
+    >
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <p className="command-label text-blue-300">Recommended action</p>
+          <h3
+            id="action-brief-title"
+            className="mt-1 text-base font-bold text-white"
+          >
+            액션 브리프
+          </h3>
+        </div>
+        <span
+          className={`rounded-full border px-2.5 py-1 text-[0.68rem] font-bold ${mode.className}`}
+        >
+          {mode.label}
+        </span>
       </div>
-      <p className="text-xs text-gray-500">담당: {brief.owner}</p>
-      <p className="text-sm text-gray-200">{brief.summary}</p>
-      <p className="text-sm text-gray-300">제안: {brief.suggestedAction}</p>
-      <button onClick={regenerate} disabled={loading} className="rounded bg-blue-700 px-3 py-1.5 text-xs text-white hover:bg-blue-600 disabled:opacity-50">
-        {loading ? '재생성 중...' : '재생성'}
+      <div className="mt-4 rounded-xl border border-slate-800 bg-slate-950/55 p-3">
+        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          Owner
+        </p>
+        <p className="mt-1 text-sm font-bold text-blue-100">{brief.owner}</p>
+      </div>
+      <div className="mt-3 space-y-3 text-sm leading-6">
+        <p className="text-slate-200">{brief.summary}</p>
+        <div className="rounded-xl border border-slate-800 bg-slate-950/55 p-3">
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            제안
+          </p>
+          <p className="mt-1 text-slate-100">{brief.suggestedAction}</p>
+        </div>
+      </div>
+      <button
+        onClick={regenerate}
+        disabled={loading}
+        className="focus-command mt-4 w-full rounded-xl bg-blue-600 px-4 py-2 text-sm font-bold text-white hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
+      >
+        {loading ? "재생성 중..." : "액션 브리프 재생성"}
       </button>
-    </div>
+    </section>
   );
 }

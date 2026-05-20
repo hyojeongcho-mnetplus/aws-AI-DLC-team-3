@@ -5,13 +5,14 @@ interface Props {
 
 export function ErrorScreen({ error, onRetry }: Props) {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-4 p-8">
-      <div className="rounded-lg border border-red-800 bg-red-950/50 p-6 text-center">
-        <h2 className="mb-2 text-lg font-semibold text-red-400">오류 발생</h2>
-        <p className="mb-4 text-sm text-gray-300">{error}</p>
+    <div className="flex min-h-screen flex-col items-center justify-center bg-command-canvas p-8 text-slate-100">
+      <div className="command-panel max-w-lg border-red-900/60 bg-red-950/30 p-6 text-center">
+        <p className="command-label text-red-300">Command center unavailable</p>
+        <h2 className="mt-2 text-2xl font-black text-red-100">오류 발생</h2>
+        <p className="mt-3 text-sm leading-6 text-slate-300">{error}</p>
         <button
           onClick={onRetry}
-          className="rounded bg-red-700 px-4 py-2 text-sm font-medium text-white hover:bg-red-600"
+          className="focus-command mt-5 rounded-xl bg-red-600 px-4 py-2 text-sm font-bold text-white hover:bg-red-500"
           aria-label="재시도"
         >
           재시도
