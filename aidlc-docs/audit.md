@@ -333,3 +333,11 @@ api: 이거도 lambda
 **Context**: 전반 설정 — AI-DLC 워크플로우 엄격 준수 지시
 
 ---
+
+## 사용자 질문 - 다음 작업
+**Timestamp**: 2026-05-20T14:16:06+09:00
+**User Input**: "그럼 ai-dlc 워크플로우 기반으로 뭐하면 될까? unit 3검증을 더 해봐야하나?"
+**AI Response**: 현재 상태 분석 및 다음 작업 옵션 제시
+**Context**: CONSTRUCTION - Code Generation, Unit 3 완료 후 다음 작업 논의
+
+---
