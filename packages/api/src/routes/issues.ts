@@ -14,7 +14,7 @@ export async function handleGetIssues(event: APIGatewayProxyEvent): Promise<APIG
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ issues: filtered, total: filtered.length }),
+    body: JSON.stringify(filtered),
   };
 }
 
@@ -34,6 +34,6 @@ export async function handleGetIssueDetail(clusterId: string): Promise<APIGatewa
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ cluster, evidence, actionBrief }),
+    body: JSON.stringify({ cluster, reviews: evidence, actionBrief }),
   };
 }

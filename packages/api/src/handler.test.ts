@@ -36,13 +36,13 @@ describe('handler routing', () => {
   it('GET /api/issues → 200', async () => {
     const res = await handler(makeEvent({ httpMethod: 'GET', path: '/api/issues' }));
     expect(res.statusCode).toBe(200);
-    expect(JSON.parse(res.body)).toHaveProperty('issues');
+    expect(Array.isArray(JSON.parse(res.body))).toBe(true);
   });
 
   it('GET /api/health → 200', async () => {
     const res = await handler(makeEvent({ httpMethod: 'GET', path: '/api/health' }));
     expect(res.statusCode).toBe(200);
-    expect(JSON.parse(res.body)).toHaveProperty('sources');
+    expect(Array.isArray(JSON.parse(res.body))).toBe(true);
   });
 
   it('GET /api/issues/{clusterId} → 404 (not found)', async () => {

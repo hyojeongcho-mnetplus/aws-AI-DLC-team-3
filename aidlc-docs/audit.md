@@ -373,3 +373,75 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation, 브랜치 동기화
 
 ---
+
+## main 동기화
+**Timestamp**: 2026-05-20T14:23:05+09:00
+**User Input**: "자 메인으로 이동해서 풀땡기고 싱크 맞춰봐."
+**AI Response**: main checkout + pull 완료. PR #2 (Unit 3) + PR #4 (Unit 2) 모두 merge된 상태 확인.
+**Context**: CONSTRUCTION - Code Generation, main 동기화
+
+---
+
+## Unit 6 프롬프트 확인 요청
+**Timestamp**: 2026-05-20T14:26:12+09:00
+**User Input**: "그 unit6의 내용중에 프롬프트 용있잖아. 확인해봐."
+**AI Response**: Unit 6 Bedrock 프롬프트 Functional Design 문서 확인
+**Context**: CONSTRUCTION - Code Generation, Unit 6 프롬프트 확인
+
+---
+
+## Unit 6 프롬프트 작성 요청
+**Timestamp**: 2026-05-20T14:28:39+09:00
+**User Input**: "그러면 브랜치 하나 만들어서 프롬프트 관련 내용을 어떻게 입력하면 좋을지 정리해줘. 특히, 목적은 여러 정보를 수집해서 그 데이터를 바탕으로 알맞게 대시보들을 운영자 또는 내부 관계자한테 잘 보여줄 수 있는 프롬프트를 작성해줘봐,"
+**AI Response**: feature/unit-6-prompts 브랜치 생성. 프롬프트 코드 작성.
+**Context**: CONSTRUCTION - Code Generation, Unit 6 프롬프트 구현
+
+---
+
+## Unit 6 - main merge + 프롬프트 재확인
+**Timestamp**: 2026-05-20T14:33:35+09:00
+**User Input**: "아 그 데시보드쪽 작업도 main에 merge되어서 그거 땡겨와서 현재 브랜치에 merge해봐. 그거 바탕으로 지금 프롬프트 한번더 확인해줘."
+**AI Response**: main fetch → 현재 브랜치에 merge → 대시보드 코드 확인 후 프롬프트 정합성 검토
+**Context**: CONSTRUCTION - Code Generation, Unit 6 프롬프트 + 대시보드 정합성 확인
+
+---
+
+## API-Dashboard 응답 형식 불일치 수정
+**Timestamp**: 2026-05-20T14:36:45+09:00
+**User Input**: "ㅇㅇㅇ 수정해줘."
+**AI Response**: API 응답 형식을 대시보드 기대값에 맞춰 수정 (issues, issue detail, health)
+**Context**: CONSTRUCTION - Code Generation, API-Dashboard 정합성 수정
+
+---
+
+## Unit 6 프롬프트 추가 검토
+**Timestamp**: 2026-05-20T14:39:32+09:00
+**User Input**: "프롬프트 관련해서 더 추가할만한 내용 있을까?"
+**AI Response**: 추가 가능한 프롬프트 옵션 제시
+**Context**: CONSTRUCTION - Code Generation, Unit 6 프롬프트 확장 검토
+
+---
+
+## Unit 6 프롬프트 추가 + 상세화
+**Timestamp**: 2026-05-20T14:40:58+09:00
+**User Input**: "ㄱㄱ 진행. 그리고 다른부분도 자세하게 잘 이해할 수 있게끔 확인해줘봐."
+**AI Response**: 클러스터 타이틀 프롬프트 추가 + 기존 프롬프트 상세화 (판별 예시 추가)
+**Context**: CONSTRUCTION - Code Generation, Unit 6 프롬프트 확장 + 상세화
+
+---
+
+## AI-DLC 워크플로우 기반 현재 상태 점검
+**Timestamp**: 2026-05-20T14:43:16+09:00
+**User Input**: "ai-dlc 워크플로우 기반으로 한번더 확인해줘봐."
+**AI Response**: 전체 워크플로우 진행 상태 및 프롬프트 코드의 Extension 규칙 준수 여부 점검
+**Context**: CONSTRUCTION - Code Generation, 워크플로우 준수 점검
+
+---
+
+## Unit 6 프롬프트 - 방어 코드 + PBT + 출처/객관성 점검
+**Timestamp**: 2026-05-20T14:46:14+09:00
+**User Input**: "ㄱㄱ 진행하고, 프롬프트 한번더 확인해줘봐. 출처에 대한 정보도 있는지랑 객관적이게 판단할수 있게끔 되어있는지."
+**AI Response**: 방어 코드 추가 + PBT 테스트 + 프롬프트에 출처 정보 명시 + 객관성 판단 규칙 강화
+**Context**: CONSTRUCTION - Code Generation, Unit 6 프롬프트 품질 강화
+
+---
