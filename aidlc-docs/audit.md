@@ -293,3 +293,35 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation, Unit 3 담당 확인
 
 ---
+
+## CONSTRUCTION - Code Generation Unit 3 완료
+**Timestamp**: 2026-05-20T14:03:41+09:00
+**User Input**: "자자 하기 전에 지금 main에 자동 push 되었어. 이거 다시 돌리거 지금 작업 내용 브랜치 하나 파서 거기에 커밋해서 pr로 올려줘봐."
+**AI Response**: main을 12ffe28로 force push 되돌림. feature/unit-3-api 브랜치 생성. PR #2 생성.
+**Context**: CONSTRUCTION - Code Generation, 브랜치 정리
+
+---
+
+## CONSTRUCTION - Unit 3 테스트 작성
+**Timestamp**: 2026-05-20T14:06:08+09:00
+**User Input**: "ㄱㄱ 진행."
+**AI Response**: validation.test.ts (12 tests) + id.test.ts (4 PBT tests) 작성. 전체 16 tests 통과.
+**Context**: CONSTRUCTION - Code Generation, 테스트 작성
+
+---
+
+## CONSTRUCTION - 빌드/테스트 검증
+**Timestamp**: 2026-05-20T14:07:17+09:00
+**User Input**: "ㄱㄱ 진행."
+**AI Response**: pnpm install → shared build → api build → vitest run. 16 tests passed.
+**Context**: CONSTRUCTION - Code Generation, Unit 3 단독 빌드/테스트 검증
+
+---
+
+## CONSTRUCTION - 상태 수정
+**Timestamp**: 2026-05-20T14:11:51+09:00
+**User Input**: "현재 단계를 Build and Test로 변경 이거 변경하는게 지금 시점에서 맞아?"
+**AI Response**: 맞지 않음. Build and Test는 모든 Unit 완료 후. aidlc-state.md를 Code Generation (Unit 3 완료, 나머지 대기)로 수정.
+**Context**: CONSTRUCTION - 상태 추적 수정
+
+---
