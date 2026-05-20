@@ -405,3 +405,11 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation, Unit 6 프롬프트 + 대시보드 정합성 확인
 
 ---
+
+## API-Dashboard 응답 형식 불일치 수정
+**Timestamp**: 2026-05-20T14:36:45+09:00
+**User Input**: "ㅇㅇㅇ 수정해줘."
+**AI Response**: API 응답 형식을 대시보드 기대값에 맞춰 수정 (issues, issue detail, health)
+**Context**: CONSTRUCTION - Code Generation, API-Dashboard 정합성 수정
+
+---
