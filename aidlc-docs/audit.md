@@ -168,3 +168,11 @@ dynamoDB에 저장하기 전에 원본 데이터를 s3에 저장해야해.
 **Context**: INCEPTION - Requirements Analysis, PR 리뷰 피드백 반영
 
 ---
+
+## Requirements Analysis - enum → const + type 변경
+**Timestamp**: 2026-05-20T12:57:07+09:00
+**User Input**: "enum 처리한것만 다시 type으로 바꿔줘. typescript에서 enum쓰지 않는걸로. 그리고 pr코멘트 다시 가져오바ㅘ."
+**AI Response**: enum → as const + type 패턴으로 변경. PR 코멘트 재확인.
+**Context**: INCEPTION - Requirements Analysis
+
+---
