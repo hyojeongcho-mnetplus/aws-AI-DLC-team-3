@@ -487,3 +487,11 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation, 프롬프트 전체 연결
 
 ---
+
+## AI-DLC 기반 검증
+**Timestamp**: 2026-05-20T15:24:54+09:00
+**User Input**: "다시 ai-dlc 기반으로 검증해줘."
+**AI Response**: Extension 규칙 (Security + PBT) 준수 여부 + 프롬프트 연결 상태 최종 검증
+**Context**: CONSTRUCTION - Code Generation, 최종 검증
+
+---
