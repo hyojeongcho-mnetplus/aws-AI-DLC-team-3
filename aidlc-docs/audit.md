@@ -349,3 +349,11 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation, Unit 3 테스트 강화
 
 ---
+
+## CONSTRUCTION - main fetch + conflict 해결
+**Timestamp**: 2026-05-20T14:19:03+09:00
+**User Input**: "main fetch 땡겨서 confict 해결해줘."
+**AI Response**: origin/main fetch 후 rebase/merge로 conflict 해결
+**Context**: CONSTRUCTION - Code Generation, 브랜치 동기화
+
+---
