@@ -34,11 +34,12 @@ export async function handler(event: { path?: string; rawPath?: string }) {
 }
 
 function respond(body: string, contentType: string) {
+  const isHtml = contentType === 'text/html';
   return {
     statusCode: 200,
     headers: {
       'content-type': contentType,
-      'cache-control': 'public, max-age=3600',
+      'cache-control': isHtml ? 'no-cache, no-store, must-revalidate' : 'public, max-age=31536000, immutable',
       'x-content-type-options': 'nosniff',
       'x-frame-options': 'DENY',
     },
