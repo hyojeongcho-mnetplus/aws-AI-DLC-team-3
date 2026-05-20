@@ -4,7 +4,7 @@
 - **Project Name**: Mnet Plus Fan Friction Radar
 - **Project Type**: Greenfield
 - **Start Date**: 2026-05-20T12:15:05+09:00
-- **Current Stage**: INCEPTION - Application Design
+- **Current Stage**: INCEPTION - Units Generation
 
 ## Workspace State
 - **Existing Code**: No
@@ -30,8 +30,8 @@
 - [x] Requirements Analysis
 - [x] User Stories (SKIP - 해커톤, 요구사항 명확)
 - [x] Workflow Planning
-- [ ] Application Design - EXECUTE
-- [ ] Units Generation - EXECUTE
+- [x] Application Design - EXECUTE
+- [x] Units Generation - EXECUTE
 
 ### CONSTRUCTION PHASE (per-unit)
 - [ ] Functional Design - EXECUTE
