@@ -41,8 +41,6 @@ Resources:
         AllowOrigin: "'*'"
         AllowMethods: "'GET,POST,OPTIONS'"
         AllowHeaders: "'Content-Type,X-Api-Key'"
-      AccessLogSetting:
-        DestinationArn: !GetAtt ApiAccessLogGroup.Arn
       MethodSettings:
         - ResourcePath: /*
           HttpMethod: '*'
@@ -55,12 +53,6 @@ Resources:
           Throttle:
             BurstLimit: 50
             RateLimit: 100
-
-  ApiAccessLogGroup:
-    Type: AWS::Logs::LogGroup
-    Properties:
-      LogGroupName: /aws/apigateway/ffr-api-access
-      RetentionInDays: 90
 
   # --- Lambda Functions ---
   IngestFunction:
