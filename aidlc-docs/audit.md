@@ -221,3 +221,11 @@ api: 이거도 lambda
 **Context**: INCEPTION - Application Design 완료, Units Generation 시작
 
 ---
+
+## Units Generation - 팀 배분 질문
+**Timestamp**: 2026-05-20T13:24:30+09:00
+**User Input**: "1을 같이하는거고, 2,3,4를 같이 진행하게 될 텐데 사람이 한명 ㅇ남는데, 여기서 더 쪼개거ㄱ나 쪼개기무ㄱ리가 있다면, 남는 한사람은 어떤 작업을 하는게 좋을까?"
+**AI Response**: 팀 배분 권장안 제시
+**Context**: INCEPTION - Units Generation, 팀 역할 배분 논의
+
+---
