@@ -341,3 +341,11 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation, Unit 3 완료 후 다음 작업 논의
 
 ---
+
+## CONSTRUCTION - Unit 3 테스트 보강
+**Timestamp**: 2026-05-20T14:16:55+09:00
+**User Input**: "A ㄱㄱ"
+**AI Response**: Unit 3 테스트 보강 진행 — handler 라우팅 + routes 테스트 작성
+**Context**: CONSTRUCTION - Code Generation, Unit 3 테스트 강화
+
+---
