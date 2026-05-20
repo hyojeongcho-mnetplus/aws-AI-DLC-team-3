@@ -1,13 +1,23 @@
 import { type ReviewEvent, generateReviewId, createLogger } from '@ffr/shared';
-import { chromium } from 'playwright';
+import { chromium as playwrightChromium } from 'playwright-core';
+import chromium from '@sparticuz/chromium';
 
 const logger = createLogger('appstore-connector');
 
 const COUNTRIES = ['kr', 'us', 'jp', 'in', 'ph', 'gb', 'br', 'tr', 'id', 'th'];
 
+async function launchBrowser() {
+  const execPath = await chromium.executablePath();
+  return playwrightChromium.launch({
+    args: chromium.args,
+    executablePath: execPath,
+    headless: true,
+  });
+}
+
 export async function fetchAppStoreReviews(appId: string): Promise<ReviewEvent[]> {
   logger.info('launching browser for multi-country scraping', { countries: COUNTRIES.length });
-  const browser = await chromium.launch({ headless: true });
+  const browser = await launchBrowser();
   const ctx = await browser.newContext({
     userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15',
   });
