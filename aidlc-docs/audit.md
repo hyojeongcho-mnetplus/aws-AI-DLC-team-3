@@ -325,3 +325,11 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - 상태 추적 수정
 
 ---
+
+## 사용자 지시 - AI-DLC 워크플로우 준수
+**Timestamp**: 2026-05-20T14:14:58+09:00
+**User Input**: "항상 언제 어디서나 ai-dlc workflow기반으로 개발해야해."
+**AI Response**: 확인. 모든 인터랙션에서 AI-DLC 워크플로우 규칙을 준수합니다 — audit.md 로깅, aidlc-state.md 업데이트, 단계별 승인 게이트, 변경 시 커밋.
+**Context**: 전반 설정 — AI-DLC 워크플로우 엄격 준수 지시
+
+---
