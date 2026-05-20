@@ -471,3 +471,27 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation, 진행 상태 점검
 
 ---
+
+## 프롬프트 연결 작업 시작
+**Timestamp**: 2026-05-20T15:10:58+09:00
+**User Input**: "브랜치 하나 만들어서 거기서 진행해줘. ai-dlc 워크플로우 기반으로."
+**AI Response**: feature/connect-prompts 브랜치 생성. API actions.ts에서 buildActionBriefPrompt 사용하도록 연결.
+**Context**: CONSTRUCTION - Code Generation, 프롬프트-코드 연결
+
+---
+
+## 프롬프트 전체 연결
+**Timestamp**: 2026-05-20T15:19:58+09:00
+**User Input**: "흠 ㄱㄱ"
+**AI Response**: Ingest classification.service.ts에서 buildClassificationPrompt 사용, cluster.service.ts에서 buildClusterTitlePrompt 사용하도록 연결
+**Context**: CONSTRUCTION - Code Generation, 프롬프트 전체 연결
+
+---
+
+## AI-DLC 기반 검증
+**Timestamp**: 2026-05-20T15:24:54+09:00
+**User Input**: "다시 ai-dlc 기반으로 검증해줘."
+**AI Response**: Extension 규칙 (Security + PBT) 준수 여부 + 프롬프트 연결 상태 최종 검증
+**Context**: CONSTRUCTION - Code Generation, 최종 검증
+
+---
