@@ -253,3 +253,11 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Functional Design, Unit 2
 
 ---
+
+## CONSTRUCTION - Unit 3~6 Functional Design 완료
+**Timestamp**: 2026-05-20T13:40:25+09:00
+**User Input**: "unit 6까지 다 해줘."
+**AI Response**: Unit 3 (API), Unit 4 (Dashboard), Unit 5 (Infrastructure), Unit 6 (Bedrock Prompt) Functional Design 모두 완료
+**Context**: CONSTRUCTION - Functional Design, Unit 3~6 일괄 완료
+
+---

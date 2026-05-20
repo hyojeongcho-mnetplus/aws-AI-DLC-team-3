@@ -34,7 +34,7 @@
 - [x] Units Generation - EXECUTE
 
 ### CONSTRUCTION PHASE (per-unit)
-- [ ] Functional Design - EXECUTE
+- [x] Functional Design - EXECUTE
 - [ ] NFR Requirements - EXECUTE
 - [ ] NFR Design - SKIP
 - [ ] Infrastructure Design - EXECUTE
