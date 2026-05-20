@@ -5,6 +5,6 @@ export default defineConfig({
   format: ['cjs'],
   target: 'node22',
   outDir: 'dist',
-  noExternal: [/@ffr\/.*/],
+  noExternal: [/@ffr\/.*/, 'google-play-scraper'],
   clean: true,
 });
