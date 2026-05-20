@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build && pnpm build:lambda",
     "build:client": "vite build",
-    "build:lambda": "tsup src/serve-handler.ts --format esm --target node22 --outDir dist",
+    "build:lambda": "tsup src/serve-handler.ts --format cjs --target node22 --out-dir dist",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest"
