@@ -206,6 +206,10 @@ interface ReviewEvent {
 - 리뷰 원문 과다 노출 방지 (redaction)
 - HTTP security headers 적용
 - Input validation on all API parameters
+- **접근 제어 설계**: 현재 해커톤 단계에서는 퍼블릭이지만, 추후 외부 접근 차단이 가능하도록 설계 시 고려
+  - API Gateway에 인증/인가 레이어 추가 가능한 구조 (API Key, Cognito, IAM Auth 등)
+  - 대시보드 접근을 내부 네트워크/VPN으로 제한할 수 있는 구조
+  - S3/DynamoDB 데이터는 외부에 직접 노출되지 않도록 API를 통해서만 접근
 
 ### NFR-04: 테스트
 
