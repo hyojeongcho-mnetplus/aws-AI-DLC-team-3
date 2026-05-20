@@ -160,3 +160,11 @@ dynamoDB에 저장하기 전에 원본 데이터를 s3에 저장해야해.
 **Context**: INCEPTION - Requirements Analysis, PR 리뷰 피드백 반영
 
 ---
+
+## Requirements Analysis - source enum + fallback 제거 반영
+**Timestamp**: 2026-05-20T12:55:12+09:00
+**User Input**: "다시 코멘트 확인해 pr"
+**AI Response**: 신규 코멘트 2개 확인. 코멘트 9(source를 enum으로) 반영, 코멘트 10(fallback 제거, 에러 발생) 반영.
+**Context**: INCEPTION - Requirements Analysis, PR 리뷰 피드백 반영
+
+---
