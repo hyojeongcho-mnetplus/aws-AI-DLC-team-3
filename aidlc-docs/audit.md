@@ -152,3 +152,11 @@ dynamoDB에 저장하기 전에 원본 데이터를 s3에 저장해야해.
 **Context**: INCEPTION - Requirements Analysis, PR 리뷰 피드백 반영
 
 ---
+
+## Requirements Analysis - rating nullable 반영
+**Timestamp**: 2026-05-20T12:53:39+09:00
+**User Input**: "또 다시 pr 코멘트 읽어."
+**AI Response**: 신규 코멘트 2개 확인. 코멘트 7(기능 분류)은 이미 반영됨. 코멘트 8(rating nullable) 반영 — 커뮤니티 글 등 별점 없는 소스 대응.
+**Context**: INCEPTION - Requirements Analysis, PR 리뷰 피드백 반영
+
+---
