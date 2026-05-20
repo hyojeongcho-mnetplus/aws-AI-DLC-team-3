@@ -1,5 +1,5 @@
 import type { APIGatewayProxyResult } from 'aws-lambda';
-import { clusterRepo, actionBriefRepo, reviewRepo, invokeModel, type ActionBrief, AI_MODE } from '@ffr/shared';
+import { clusterRepo, actionBriefRepo, reviewRepo, invokeModel, buildActionBriefPrompt, type ActionBrief, AI_MODE } from '@ffr/shared';
 import { validateClusterId } from '../middleware/validation.js';
 import { createLogger } from '@ffr/shared';
 
@@ -19,7 +19,7 @@ export async function handleCreateActionBrief(clusterId: string): Promise<APIGat
 
   let brief: ActionBrief;
   try {
-    const prompt = `클러스터: ${JSON.stringify(cluster)}\n증거 리뷰: ${JSON.stringify(relevant.slice(0, 5))}\n\nJSON으로 owner, summary, suggestedAction을 생성해주세요.`;
+    const prompt = buildActionBriefPrompt(cluster, relevant.slice(0, 10));
     const raw = await invokeModel(prompt);
     const parsed = JSON.parse(raw);
     brief = {
