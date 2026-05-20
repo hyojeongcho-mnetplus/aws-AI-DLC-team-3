@@ -70,8 +70,8 @@
 - [x] packages/dashboard/src/serve-handler.ts (Dashboard Lambda 핸들러)
 
 ## Step 7: Unit 5 — Infrastructure
-- [ ] infra/template.yaml (SAM template)
-- [ ] infra/samconfig.toml (배포 설정)
+- [x] infra/template.yaml (SAM template)
+- [x] infra/samconfig.toml (배포 설정)
 
 ## Step 8: 테스트
 - [ ] packages/shared/src/utils/id.test.ts (PBT: generateReviewId invariant)

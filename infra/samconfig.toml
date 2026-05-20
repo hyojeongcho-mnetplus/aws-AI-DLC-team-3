@@ -1,0 +1,18 @@
+version = 0.1
+
+[default.deploy.parameters]
+stack_name = "fan-friction-radar"
+resolve_s3 = true
+s3_prefix = "fan-friction-radar"
+region = "ap-northeast-2"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM CAPABILITY_AUTO_EXPAND"
+tags = "Project=FanFrictionRadar"
+
+[default.validate.parameters]
+template_file = "template.yaml"
+region = "ap-northeast-2"
+
+[default.build.parameters]
+cached = true
+parallel = true

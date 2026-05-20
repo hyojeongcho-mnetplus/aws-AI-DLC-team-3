@@ -1,0 +1,50 @@
+name: Deploy Infrastructure
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'infra/**'
+      - 'packages/**'
+
+env:
+  AWS_REGION: us-east-1
+  SAM_STACK_NAME: fan-friction-radar
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build packages
+        run: pnpm -r build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - uses: aws-actions/setup-sam@v2
+
+      - name: SAM Build
+        run: sam build
+        working-directory: infra
+
+      - name: SAM Deploy
+        run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --region ${{ env.AWS_REGION }}
+        working-directory: infra
