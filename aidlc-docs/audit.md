@@ -445,3 +445,21 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation, Unit 6 프롬프트 품질 강화
 
 ---
+
+## Build and Test Stage
+**Timestamp**: 2026-05-20T15:05:00+09:00
+**User Input**: "buil and test 진행하자"
+**Build Status**: Success (4 packages)
+**Test Status**: Pass (52/52 tests)
+**Issues Fixed**:
+- vitest.workspace.ts 추가 (jsdom/node 환경 분리)
+- usePolling.test.ts fake timer 수정
+- classification.service.test.ts fc.date() Invalid Date 수정
+**Files Generated**:
+- aidlc-docs/construction/build-and-test/build-instructions.md
+- aidlc-docs/construction/build-and-test/unit-test-instructions.md
+- aidlc-docs/construction/build-and-test/integration-test-instructions.md
+- aidlc-docs/construction/build-and-test/build-and-test-summary.md
+**Context**: Construction Phase - Build and Test stage completed
+
+---
