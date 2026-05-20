@@ -15,7 +15,7 @@ import { updateClusters } from './cluster.service.js';
 
 const logger = createLogger('ingest-service');
 
-const APP_STORE_ID = process.env.APP_STORE_ID ?? '1536845339';
+const APP_STORE_ID = process.env.APP_STORE_ID ?? '6443405421';
 const GOOGLE_PLAY_PKG = process.env.GOOGLE_PLAY_PKG ?? 'com.cjenm.mnetplus';
 
 interface IngestResult {
