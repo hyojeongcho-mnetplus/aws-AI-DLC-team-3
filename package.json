@@ -2,9 +2,11 @@
   "name": "fan-friction-radar",
   "private": true,
   "scripts": {
+    "typecheck": "pnpm -r --filter @ffr/shared --filter @ffr/api --filter @ffr/ingest exec tsc --noEmit",
     "build": "pnpm -r build",
     "test": "vitest run",
     "test:watch": "vitest",
+    "verify": "pnpm typecheck && pnpm test",
     "lint": "eslint packages/",
     "format": "prettier --write ."
   },

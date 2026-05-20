@@ -3,6 +3,8 @@ import gplay from 'google-play-scraper';
 
 const logger = createLogger('googleplay-connector');
 
+const SORT_NEWEST = 2;
+
 export async function fetchGooglePlayReviews(packageName: string): Promise<ReviewEvent[]> {
   try {
     const result = await gplay.reviews({
@@ -10,7 +12,7 @@ export async function fetchGooglePlayReviews(packageName: string): Promise<Revie
       lang: 'ko',
       country: 'kr',
       num: 50,
-      sort: gplay.sort.NEWEST,
+      sort: SORT_NEWEST,
     });
 
     const reviews = result.data;

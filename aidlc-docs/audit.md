@@ -495,3 +495,51 @@ api: 이거도 lambda
 **Context**: CONSTRUCTION - Code Generation, 최종 검증
 
 ---
+
+## App Store connector 확인
+**Timestamp**: 2026-05-20T15:33:49+09:00
+**User Input**: "구글스토어 스크랩핑으로 가져왔는데, 앱스토어 정보도 가져와할 것 같은데 확인해줘봐."
+**AI Response**: App Store connector 현재 구현 상태 확인
+**Context**: CONSTRUCTION - Code Generation, App Store connector 점검
+
+---
+
+## App Store connector 실제 테스트
+**Timestamp**: 2026-05-20T15:35:17+09:00
+**User Input**: "실제로 띄워서 확인해볼수 있을까?"
+**AI Response**: App Store RSS Feed 실제 호출 테스트 실행
+**Context**: CONSTRUCTION - Code Generation, connector 실제 동작 확인
+
+---
+
+## 사용자 지시 - 타입체크 항상 수행
+**Timestamp**: 2026-05-20T15:37:53+09:00
+**User Input**: "그 이거 코드 수정이나 추가될때 타입체크하는 부분도 항상 챙기도록 해줘."
+**AI Response**: 확인. 앞으로 코드 변경 시 항상 TypeScript 타입체크(tsc --noEmit) 실행 후 커밋합니다.
+**Context**: 전반 설정 — 코드 변경 시 타입체크 필수
+
+---
+
+## 타입체크 프롬프트 추가 여부 확인
+**Timestamp**: 2026-05-20T15:38:56+09:00
+**User Input**: "항상 실행되야할꺼에 프롬프트 추가안해도되나? ai-dlc 워크플로우 기반에서."
+**AI Response**: AI-DLC 워크플로우 규칙 파일에 타입체크 필수 규칙을 추가할 필요는 없음. audit.md에 기록된 사용자 지시로 충분. 다만 code-generation-plan.md에 검증 단계로 명시하는 것은 가능.
+**Context**: AI-DLC 워크플로우 규칙 관리
+
+---
+
+## 타입 에러 수정
+**Timestamp**: 2026-05-20T15:46:37+09:00
+**User Input**: "아 잠만 타입에러는 잡아야지. 타입에러 수정해."
+**AI Response**: ingest/connectors/googleplay.ts의 sort.NEWEST 타입 에러 수정
+**Context**: CONSTRUCTION - Code Generation, 타입 에러 수정
+
+---
+
+## 빌드 에러 수정
+**Timestamp**: 2026-05-20T15:58:07+09:00
+**User Input**: "build하면 에러가나."
+**AI Response**: 빌드 에러 확인 및 수정
+**Context**: CONSTRUCTION - Code Generation, 빌드 에러 수정
+
+---
