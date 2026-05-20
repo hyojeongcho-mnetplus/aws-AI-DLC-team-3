@@ -205,3 +205,11 @@ api: 이거도 lambda
 **Context**: INCEPTION - Workflow Planning 완료, Application Design 시작
 
 ---
+
+## Application Design - PR 코멘트 반영
+**Timestamp**: 2026-05-20T13:15:28+09:00
+**User Input**: "코멘트 학인 pr"
+**AI Response**: PR 코멘트 #13 (davkim1030: 각 단계 실패 인지/재시도/전체 실패 명시) 반영. 에러 처리 전략 상세화.
+**Context**: INCEPTION - Application Design, PR 리뷰 피드백 반영
+
+---
