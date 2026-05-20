@@ -163,6 +163,7 @@ interface ReviewEvent {
 - **FR-05.5**: Issue detail 화면에서 evidence panel과 action brief panel을 제공한다
 - **FR-05.6**: 폴링으로 일정 간격 자동 갱신한다
 - **FR-05.7**: 정제된 데이터를 기준으로 기능 분류별, 이슈 타입별, 에러 등급별 필터/조회를 지원한다
+- **FR-05.8**: 수집 실패 시 fallback 데이터가 아닌 에러 화면을 표시한다 (명확한 에러 상태 노출)
 
 ### FR-06: Source Health
 
