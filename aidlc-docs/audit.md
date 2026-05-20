@@ -229,3 +229,19 @@ api: 이거도 lambda
 **Context**: INCEPTION - Units Generation, 팀 역할 배분 논의
 
 ---
+
+## Units Generation - 승인
+**Timestamp**: 2026-05-20T13:34:17+09:00
+**User Input**: "Approve & Continue ㄱㄱ 진행"
+**AI Response**: Units Generation 승인 완료. CONSTRUCTION PHASE - Functional Design 시작.
+**Context**: INCEPTION 완료, CONSTRUCTION PHASE 시작
+
+---
+
+## CONSTRUCTION - Functional Design 시작 (Unit 1)
+**Timestamp**: 2026-05-20T13:35:13+09:00
+**User Input**: "unit 1부터 진행해 한번에 말고.."
+**AI Response**: Unit 1 (Shared Foundation)부터 Functional Design 진행
+**Context**: CONSTRUCTION - Functional Design, Unit 1
+
+---
